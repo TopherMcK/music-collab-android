@@ -6,5 +6,5 @@ package com.lc.musiccollab.networking.login;
 
 public interface LoginService {
 
-    public boolean submitLogin(String username, String password);
+    boolean submitLogin(String username, String password);
 }

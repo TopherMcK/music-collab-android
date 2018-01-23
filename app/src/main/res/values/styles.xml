@@ -2,21 +2,72 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="android:background">@drawable/primary_background</item>
     </style>
 
-    <style name="loginTitle" parent="android:TextAppearance.Widget.TextView">
-        <item name="android:text">40sp</item>
-        <item name="android:width">200dp</item>
+    <!-- global -->
+    <style name="ScrollView" parent="android:TextAppearance.Widget.EditText">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <!-- login styles -->
+    <style name="LoginView">
+        <item name="android:background">@drawable/primary_background</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="LoginWrapper">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:paddingTop">10dp</item>
+    </style>
+
+    <style name="LoginTitleBackground">
+        <item name="android:background">@drawable/login_title</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_marginBottom">100dp</item>
+        <item name="android:width">200dp</item>
     </style>
 
-    <style name="loginText" parent="android:TextAppearance.Widget.TextView">
-        <item name="android:text">20sp</item>
-        <item name="android:width">200dp</item>
-        <item name="android:layout_gravity">center</item>
+    <style name="LoginTitleText" parent="android:TextAppearance.Widget.TextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">-20dp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">70sp</item>
+    </style>
+
+    <style name="LoginEditText" parent="android:TextAppearance.Widget.EditText">
+        <item name="android:background">@drawable/login_edit_text</item>
         <item name="android:color">#000</item>
-        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginBottom">50dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:width">200dp</item>
+    </style>
+
+    <style name="LoginBtn">
+        <item name="android:background">@drawable/submit_btn</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:textSize">40sp</item>
     </style>
 
 </resources>

@@ -2,10 +2,12 @@ package com.lc.musiccollab.ui.login;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lc.musiccollab.MainActivity;
@@ -25,6 +27,7 @@ public class LoginActivity extends Activity {
 
     Button login;
     EditText usernameEditText, passwordEditText;
+    TextView loginTitleTextView;
 
     private boolean isValidUser;
 
@@ -40,8 +43,10 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.login);
 
         sessionManager = new SessionManager(getApplicationContext());
-        Toast.makeText(getApplicationContext(), "User Login Status: " + sessionManager.isLoggedIn(), Toast.LENGTH_LONG).show();
 
+        loginTitleTextView = (TextView) findViewById(R.id.loginTitleTextView);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+        loginTitleTextView.setTypeface(font);
 
         login = (Button) findViewById(R.id.button);
         usernameEditText = (EditText) findViewById(R.id.editUn);
