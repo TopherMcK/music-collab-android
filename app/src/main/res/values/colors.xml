@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="backgrounGradientStart">#ffff99</color>
-    <color name="backgroundGradientStop">#e7ffaf</color>
+    <color name="backgroundGradientCenter">#edffae</color>
+    <color name="backgrounGradientStart">#ffffb7</color>
+    <color name="backgroundGradientStop">#e7ffab</color>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#758d63</color>
     <color name="colorAccent">#FF4081</color>
     <color name="grayBtn">#9f9f9f</color>
     <color name="loginTitleGradientStart">#aac1d89b</color>
     <color name="loginTitleGradientStop">#aa36552a</color>
-    <color name="primaryBackground">#e7ffaf</color>
 </resources>

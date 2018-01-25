@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Music Collab</string>
 
+    <!-- Action Bar Items -->
+    <string name="home_action">Home</string>
+    <string name="logout">Logout</string>
+
     <!-- Login -->
     <string name="login_title">MusicCollab</string>
     <string name="login_username_hint">Username</string>

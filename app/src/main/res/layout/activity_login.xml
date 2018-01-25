@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/LoginView">
+    style="@style/LoginLayout">
 
     <ScrollView style="@style/ScrollView">
 
@@ -16,17 +16,17 @@
             </RelativeLayout>
 
             <EditText
-                android:id="@+id/editUn"
+                android:id="@+id/loginUnInput"
                 style="@style/LoginEditText"
                 android:hint="@string/login_username_hint" />
 
             <EditText
-                android:id="@+id/editPw"
+                android:id="@+id/loginPwInput"
                 style="@style/LoginEditText"
                 android:hint="@string/login_password_hint" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/loginSubmitBtn"
                 style="@style/LoginBtn"
                 android:text="@string/login_btn" />
 

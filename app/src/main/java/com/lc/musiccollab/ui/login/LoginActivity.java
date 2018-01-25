@@ -3,78 +3,90 @@ package com.lc.musiccollab.ui.login;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lc.musiccollab.MainActivity;
+import com.lc.musiccollab.MainActivity_;
 import com.lc.musiccollab.R;
 import com.lc.musiccollab.data.SessionManager;
-import com.lc.musiccollab.networking.login.LoginModule;
-import com.lc.musiccollab.networking.login.LoginService;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.UiThread;
+import org.androidannotations.annotations.ViewById;
 
 /**
  * Created by topher on 1/22/2018.
  */
 
-public class LoginActivity extends Activity {
-
-    SessionManager sessionManager;
-    LoginService loginService;
-
-    Button login;
-    EditText usernameEditText, passwordEditText;
-    TextView loginTitleTextView;
+@EActivity(R.layout.activity_login)
+public class LoginActivity extends AppCompatActivity {
 
     private boolean isValidUser;
-
-    public static final int CONNECTION_TIMEOUT = 10000;
-    public static final int READ_TIMEOUT = 10000;
 
     private String username;
     private String password;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+    SessionManager sessionManager;
 
-        sessionManager = new SessionManager(getApplicationContext());
+    // uncomment when implementing activity_login rest service
+//    @RestService
+//    LoginService loginService;
 
+    @ViewById
+    EditText loginUnInput;
+
+    @ViewById
+    EditText loginPwInput;
+
+    @ViewById
+    TextView loginTitleTextView;
+
+    @AfterViews
+    void setTitleFontFace()
+    {
         loginTitleTextView = (TextView) findViewById(R.id.loginTitleTextView);
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
         loginTitleTextView.setTypeface(font);
-
-        login = (Button) findViewById(R.id.button);
-        usernameEditText = (EditText) findViewById(R.id.editUn);
-        passwordEditText = (EditText) findViewById(R.id.editPw);
-
-        username = usernameEditText.getText().toString();
-        password = passwordEditText.getText().toString();
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginService = new LoginModule();
-                isValidUser = loginService.submitLogin(username, password);
-                checkIsValidUser();
-            }
-        });
     }
 
-    private void checkIsValidUser() {
+    @Click({R.id.loginSubmitBtn})
+    void loginUser()
+    {
+        username = loginUnInput.getText().toString();
+        password = loginPwInput.getText().toString();
+        checkIsValidUser();
+    }
+
+    @Background
+    public void checkIsValidUser() {
+        // change to false when api functionality in implemented
+        isValidUser = true;
+        // uncomment when api is up for testing
+//        isValidUser = loginService.submitLogin(username, password);
+
         if (isValidUser) {
-            sessionManager.createLoginSession("", "");
+            sessionManager = new SessionManager(getApplicationContext());
+            sessionManager.createLoginSession("name", "email");
 
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-
-            LoginActivity.this.finish();
+            startMainActvity();
         } else {
-            Toast.makeText(LoginActivity.this, "Invalid User Name or Password", Toast.LENGTH_LONG).show();
+            Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @UiThread
+    public void startMainActvity()
+    {
+        MainActivity_.intent(getApplicationContext())
+                .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .start();
+
+        LoginActivity.this.finish();
     }
 }

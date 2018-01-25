@@ -5,10 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.lc.musiccollab.ui.login.LoginActivity;
+import com.lc.musiccollab.MainActivity_;
+import com.lc.musiccollab.ui.login.LoginActivity_;
+
+import org.androidannotations.annotations.EBean;
 
 import java.util.HashMap;
 
+@EBean
 public class SessionManager {
 
     public SessionManager(Context context)
@@ -33,8 +37,8 @@ public class SessionManager {
     public void createLoginSession(String name, String email)
     {
         editor.putBoolean(IS_LOGIN, true);
-        editor.putString(KEY_NAME, null);
-        editor.putString(KEY_EMAIL, null);
+        editor.putString(KEY_NAME, name);
+        editor.putString(KEY_EMAIL, email);
         editor.commit();
     }
 
@@ -42,11 +46,12 @@ public class SessionManager {
     {
         if(!this.isLoggedIn())
         {
-            Intent intent = new Intent(_context, LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            _context.startActivity(intent);
+            LoginActivity_.intent(_context).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    .start();
+        } else
+        {
+            MainActivity_.intent(_context).start();
         }
     }
 
@@ -62,11 +67,9 @@ public class SessionManager {
         editor.clear();
         editor.commit();
 
-        Intent intent = new Intent(_context, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        _context.startActivity(intent);
+        LoginActivity_.intent(_context).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .start();
     }
 
     public boolean isLoggedIn()
