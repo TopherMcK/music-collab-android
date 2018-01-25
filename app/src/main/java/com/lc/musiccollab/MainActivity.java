@@ -12,6 +12,7 @@ import com.lc.musiccollab.data.SessionManager;
 import com.lc.musiccollab.ui.tabs.TabsPagerAdapter;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
@@ -25,6 +26,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 @OptionsMenu(R.menu.primary_options_menu)
 public class MainActivity extends AppCompatActivity {
 
+    @Bean
     SessionManager sessionManager;
 
     @OptionsItem(R.id.logout)
@@ -48,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
     @AfterViews
     void init()
     {
-        sessionManager = new SessionManager(getApplicationContext());
-        sessionManager.checkLogin();
+        sessionManager.checkLogin(getApplicationContext());
 
 
 //        mainTabLayout.addTab(mainTabLayout.newTab().setTag("Tab 1"));
