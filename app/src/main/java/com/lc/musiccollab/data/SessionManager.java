@@ -16,7 +16,7 @@ import java.util.HashMap;
 @EBean
 public class SessionManager {
 
-    public SessionManager(){}
+    public SessionManager(Context context){}
 
     SharedPreferences pref;
     Editor editor;

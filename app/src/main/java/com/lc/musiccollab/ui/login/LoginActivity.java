@@ -3,15 +3,13 @@ package com.lc.musiccollab.ui.login;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lc.musiccollab.ui.home.HomeActivity_;
 import com.lc.musiccollab.R;
 import com.lc.musiccollab.data.SessionManager;
-import com.lc.musiccollab.utils.CONSTANTS;
+import com.lc.musiccollab.ui.home.HomeActivity_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -26,7 +24,7 @@ import org.androidannotations.annotations.ViewById;
  */
 
 @EActivity(R.layout.activity_login)
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
 
     private boolean isValidUser;
 
@@ -52,9 +50,9 @@ public class LoginActivity extends AppCompatActivity {
     @AfterViews
     void init()
     {
-//        loginTitleTextView = (TextView) findViewById(R.id.loginTitleTextView);
-//        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
-//        loginTitleTextView.setTypeface(font);
+        loginTitleTextView = (TextView) findViewById(R.id.loginTitleTextView);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+        loginTitleTextView.setTypeface(font);
     }
 
     @Click({R.id.loginSubmitBtn})

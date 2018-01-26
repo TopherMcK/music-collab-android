@@ -14,9 +14,11 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat">
+        android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.home.HomeActivity_" android:launchMode="singleTop">
+        <activity android:name=".ui.home.HomeActivity_"
+            android:theme="@style/AppTheme"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
