@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.lc.musiccollab.MainActivity_;
+import com.lc.musiccollab.ui.home.HomeActivity_;
 import com.lc.musiccollab.ui.login.LoginActivity_;
 import com.lc.musiccollab.utils.CONSTANTS;
 
@@ -52,7 +52,7 @@ public class SessionManager {
                     .start();
         } else
         {
-            MainActivity_.intent(_context).start();
+            HomeActivity_.intent(_context).start();
         }
     }
 

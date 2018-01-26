@@ -3,17 +3,8 @@ package com.lc.musiccollab.ui.tabs;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.lc.musiccollab.MainActivity;
-import com.lc.musiccollab.MainActivity_;
-import com.lc.musiccollab.R;
-import com.lc.musiccollab.ui.tabs.connections.TabFragmentConnections;
-import com.lc.musiccollab.ui.tabs.home.TabFragmentHome;
-import com.lc.musiccollab.ui.tabs.search.TabFragmentSearch;
-
-import org.androidannotations.annotations.EViewGroup;
-import org.androidannotations.annotations.FragmentById;
+import com.lc.musiccollab.ui.home.HomeActivity_;
 
 /**
  * Created by topher on 1/24/2018.
@@ -35,7 +26,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position)
     {
-        return MainActivity_.HomeFragment_.builder()
+        return HomeActivity_.HomeFragment_.builder()
                 .index(position + 1).build();
     }
 

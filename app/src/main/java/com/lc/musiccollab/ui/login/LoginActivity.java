@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lc.musiccollab.MainActivity_;
+import com.lc.musiccollab.ui.home.HomeActivity_;
 import com.lc.musiccollab.R;
 import com.lc.musiccollab.data.SessionManager;
 import com.lc.musiccollab.utils.CONSTANTS;
@@ -50,11 +50,11 @@ public class LoginActivity extends AppCompatActivity {
     TextView loginTitleTextView;
 
     @AfterViews
-    void setTitleFontFace()
+    void init()
     {
-        loginTitleTextView = (TextView) findViewById(R.id.loginTitleTextView);
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
-        loginTitleTextView.setTypeface(font);
+//        loginTitleTextView = (TextView) findViewById(R.id.loginTitleTextView);
+//        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+//        loginTitleTextView.setTypeface(font);
     }
 
     @Click({R.id.loginSubmitBtn})
@@ -75,16 +75,16 @@ public class LoginActivity extends AppCompatActivity {
         if (isValidUser) {
             sessionManager.createLoginSession(getApplicationContext(), "placeholder name", "placeholder email");
 
-            startMainActvity();
+            startHomeActvity();
         } else {
             Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_LONG).show();
         }
     }
 
     @UiThread
-    public void startMainActvity()
+    void startHomeActvity()
     {
-        MainActivity_.intent(getApplicationContext())
+        HomeActivity_.intent(getApplicationContext())
                 .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 .start();

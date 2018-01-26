@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navBottHome"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/nav_bott_home"/>
+    <item
+        android:id="@+id/navBottSearch"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/nav_bott_search"/>
+    <item
+        android:id="@+id/navBottEvents"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/nav_bott_events"/>
+    <item
+        android:id="@+id/navBottProfile"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/nav_bott_profile"/>
+</menu>
