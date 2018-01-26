@@ -3,8 +3,8 @@
     <color name="backgroundGradientCenter">#edffae</color>
     <color name="backgrounGradientStart">#ffffb7</color>
     <color name="backgroundGradientStop">#e7ffab</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#758d63</color>
+    <color name="colorPrimary">#758d63</color>
+    <color name="colorPrimaryDark">#5a6d4c</color>
     <color name="colorAccent">#FF4081</color>
     <color name="grayBtn">#9f9f9f</color>
     <color name="loginTitleGradientStart">#aac1d89b</color>

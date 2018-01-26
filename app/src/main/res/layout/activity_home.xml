@@ -20,4 +20,10 @@
         android:layout_height="match_parent"
         android:layout_below="@id/pager"/>
 
+    <!--
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottomNav"
+        style="@style/BottomNav"
+        app:menu="@menu/bottom_nav_menu"/>
+-->
 </RelativeLayout>

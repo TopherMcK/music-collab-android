@@ -8,12 +8,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lc.musiccollab.MainActivity_;
+import com.lc.musiccollab.ui.home.HomeActivity_;
 import com.lc.musiccollab.R;
 import com.lc.musiccollab.data.SessionManager;
+import com.lc.musiccollab.utils.CONSTANTS;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
@@ -31,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private String username;
     private String password;
 
+    @Bean
     SessionManager sessionManager;
 
     // uncomment when implementing activity_login rest service
@@ -47,11 +50,11 @@ public class LoginActivity extends AppCompatActivity {
     TextView loginTitleTextView;
 
     @AfterViews
-    void setTitleFontFace()
+    void init()
     {
-        loginTitleTextView = (TextView) findViewById(R.id.loginTitleTextView);
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
-        loginTitleTextView.setTypeface(font);
+//        loginTitleTextView = (TextView) findViewById(R.id.loginTitleTextView);
+//        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+//        loginTitleTextView.setTypeface(font);
     }
 
     @Click({R.id.loginSubmitBtn})
@@ -70,19 +73,18 @@ public class LoginActivity extends AppCompatActivity {
 //        isValidUser = loginService.submitLogin(username, password);
 
         if (isValidUser) {
-            sessionManager = new SessionManager(getApplicationContext());
-            sessionManager.createLoginSession("name", "email");
+            sessionManager.createLoginSession(getApplicationContext(), "placeholder name", "placeholder email");
 
-            startMainActvity();
+            startHomeActvity();
         } else {
             Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_LONG).show();
         }
     }
 
     @UiThread
-    public void startMainActvity()
+    void startHomeActvity()
     {
-        MainActivity_.intent(getApplicationContext())
+        HomeActivity_.intent(getApplicationContext())
                 .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 .start();

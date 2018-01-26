@@ -5,8 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.lc.musiccollab.MainActivity_;
+import com.lc.musiccollab.ui.home.HomeActivity_;
 import com.lc.musiccollab.ui.login.LoginActivity_;
+import com.lc.musiccollab.utils.CONSTANTS;
 
 import org.androidannotations.annotations.EBean;
 
@@ -15,12 +16,7 @@ import java.util.HashMap;
 @EBean
 public class SessionManager {
 
-    public SessionManager(Context context)
-    {
-        this._context = context;
-        pref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
-        editor = pref.edit();
-    }
+    public SessionManager(){}
 
     SharedPreferences pref;
     Editor editor;
@@ -28,22 +24,27 @@ public class SessionManager {
 
     int PRIVATE_MODE = 0;
 
-    private static final String PREF_NAME = "UserPref";
-    private static final String IS_LOGIN = "IsLoggedIn";
-
-    public static final String KEY_NAME = "name";
-    public static final String KEY_EMAIL = "email";
-
-    public void createLoginSession(String name, String email)
+    public void setContext(Context _startupContext)
     {
-        editor.putBoolean(IS_LOGIN, true);
-        editor.putString(KEY_NAME, name);
-        editor.putString(KEY_EMAIL, email);
+        this._context = _startupContext;
+        pref = _context.getSharedPreferences(CONSTANTS.PREF_NAME, PRIVATE_MODE);
+        editor = pref.edit();
+    }
+
+    public void createLoginSession(Context _loginViewContext, String name, String email)
+    {
+        setContext(_loginViewContext);
+
+        editor.putBoolean(CONSTANTS.IS_LOGGED_IN, true);
+        editor.putString(CONSTANTS.KEY_NAME, name);
+        editor.putString(CONSTANTS.KEY_EMAIL, email);
         editor.commit();
     }
 
-    public void checkLogin()
+    public void checkLogin(Context _startupContext)
     {
+        setContext(_startupContext);
+
         if(!this.isLoggedIn())
         {
             LoginActivity_.intent(_context).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -51,7 +52,7 @@ public class SessionManager {
                     .start();
         } else
         {
-            MainActivity_.intent(_context).start();
+            HomeActivity_.intent(_context).start();
         }
     }
 
@@ -74,6 +75,6 @@ public class SessionManager {
 
     public boolean isLoggedIn()
     {
-        return pref.getBoolean(IS_LOGIN, false);
+        return pref.getBoolean(CONSTANTS.IS_LOGGED_IN, false);
     }
 }

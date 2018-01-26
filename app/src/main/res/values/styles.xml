@@ -9,7 +9,7 @@
     </style>
 
     <style name="ActionBarCustoms" parent="@android:style/Widget.Holo.ActionBar">
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorPrimary</item>
         <item name="android:titleTextStyle">@style/BrandTitleText</item>
     </style>
 
@@ -31,7 +31,21 @@
         <item name="android:layout_height">64dp</item>
     </style>
 
-    <!-- global -->
+    <!--
+        bottom nav
+    -->
+    <!--
+    <style name="BottomNav" parent="Widget.Design.BottomNavigationView">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:layout_height">?android:actionBarSize</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+-->
+    <!--
+        global
+    -->
     <style name="ScrollView" parent="android:TextAppearance.Widget.EditText">
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">match_parent</item>
@@ -53,7 +67,9 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <!-- activity_login styles -->
+    <!--
+        activity_login styles
+    -->
     <style name="ThemeLogin" parent="Theme.AppCompat.NoActionBar">
         <item name="android:background">@drawable/primary_background</item>
         <item name="android:layout_width">match_parent</item>

@@ -1,17 +1,18 @@
-package com.lc.musiccollab;
+package com.lc.musiccollab.ui.home;
 
 import android.support.v4.app.Fragment;
 import android.content.Context;
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.lc.musiccollab.R;
 import com.lc.musiccollab.data.SessionManager;
 import com.lc.musiccollab.ui.tabs.TabsPagerAdapter;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
@@ -21,10 +22,11 @@ import org.androidannotations.annotations.ViewById;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-@EActivity(R.layout.activity_main)
+@EActivity(R.layout.activity_home)
 @OptionsMenu(R.menu.primary_options_menu)
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
+    @Bean
     SessionManager sessionManager;
 
     @OptionsItem(R.id.logout)
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     @ViewById(R.id.pager)
     ViewPager viewPager;
 
+//    @ViewById
+//    BottomNavigationView bottomNav;
+
     @Override
     protected void attachBaseContext(Context newBase)
     {
@@ -48,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
     @AfterViews
     void init()
     {
-        sessionManager = new SessionManager(getApplicationContext());
-        sessionManager.checkLogin();
+        sessionManager.checkLogin(getApplicationContext());
 
+//        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
 
 //        mainTabLayout.addTab(mainTabLayout.newTab().setTag("Tab 1"));
 //        mainTabLayout.addTab(mainTabLayout.newTab().setTag("Tab 2"));
@@ -93,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
     public static class HomeFragment extends Fragment
     {
         public HomeFragment(){}
+
         @FragmentArg
         int index;
 
