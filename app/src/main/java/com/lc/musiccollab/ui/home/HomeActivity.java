@@ -1,10 +1,10 @@
 package com.lc.musiccollab.ui.home;
 
-import android.support.v4.app.Fragment;
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.lc.musiccollab.R;
@@ -19,6 +19,8 @@ import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
+
+import android.support.v7.app.AppCompatActivity;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -35,11 +37,11 @@ public class HomeActivity extends AppCompatActivity {
         sessionManager.logoutUser();
     }
 
-    @ViewById(R.id.main_tab_layout)
-    TabLayout mainTabLayout;
-
     @ViewById(R.id.pager)
     ViewPager viewPager;
+
+    @ViewById(R.id.main_tab_layout)
+    TabLayout mainTabLayout;
 
 //    @ViewById
 //    BottomNavigationView bottomNav;

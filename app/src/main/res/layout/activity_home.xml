@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/AppTheme"
     style="@style/MainWrapper"
-    tools:context="com.lc.musiccollab.MainActivity">
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/main_tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:minHeight="?attr/actionBarSize"
-        app:tabGravity="fill"
-        android:theme="@style/ThemeOverlay.AppCompat"/>
+    tools:context="com.lc.musiccollab.ui.home.HomeActivity_">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/pager"/>
+        android:layout_below="@id/pager">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/main_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat"/>
+
+    </android.support.v4.view.ViewPager>
 
     <!--
     <android.support.design.widget.BottomNavigationView
@@ -26,4 +28,4 @@
         style="@style/BottomNav"
         app:menu="@menu/bottom_nav_menu"/>
 -->
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
