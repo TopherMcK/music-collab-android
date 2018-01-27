@@ -1,6 +1,7 @@
 package com.lc.musiccollab.ui.home;
 
 import android.content.Context;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -43,8 +44,8 @@ public class HomeActivity extends AppCompatActivity {
     @ViewById(R.id.main_tab_layout)
     TabLayout mainTabLayout;
 
-//    @ViewById
-//    BottomNavigationView bottomNav;
+    @ViewById
+    BottomNavigationView bottomNav;
 
     @Override
     protected void attachBaseContext(Context newBase)
