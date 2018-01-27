@@ -5,6 +5,6 @@
     <ImageButton
         style="@style/TabFragmentIcon"
         android:id="@+id/tabFragmentIconHome"
-        android:src="@drawable/ic_home_black_24dp"/>
+        android:icon="@android:drawable/ic_search_category_default"/>
 
 </RelativeLayout>

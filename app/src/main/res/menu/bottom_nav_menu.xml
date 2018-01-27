@@ -6,14 +6,14 @@
         android:title="@string/nav_bott_home"/>
     <item
         android:id="@+id/navBottSearch"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/nav_bott_search"/>
+        android:icon="@android:drawable/ic_search_category_default"
+        android:title="Search"/>
     <item
         android:id="@+id/navBottEvents"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@android:drawable/ic_menu_my_calendar"
         android:title="@string/nav_bott_events"/>
     <item
         android:id="@+id/navBottProfile"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_person_black_24dp"
         android:title="@string/nav_bott_profile"/>
 </menu>

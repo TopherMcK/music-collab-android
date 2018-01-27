@@ -3,9 +3,14 @@
     <color name="backgroundGradientCenter">#edffae</color>
     <color name="backgrounGradientStart">#ffffb7</color>
     <color name="backgroundGradientStop">#e7ffab</color>
+    <color name="botNavBG">#fff</color>
+    <color name="botNavColorPrimary">#eee</color>
+    <color name="botNavColorTint">#BDBDBD</color>
+    <color name="botNavStroke">#BDBDBD</color>
+    <color name="botNavStrokeEnd">#fff</color>
     <color name="colorPrimary">#758d63</color>
     <color name="colorPrimaryDark">#5a6d4c</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#757575</color>
     <color name="grayBtn">#9f9f9f</color>
     <color name="loginTitleGradientStart">#aac1d89b</color>
     <color name="loginTitleGradientStop">#aa36552a</color>
