@@ -3,49 +3,92 @@ package com.lc.musiccollab.di.module;
 import android.app.Application;
 import android.content.Context;
 
-import com.lc.musiccollab.R;
-import com.lc.musiccollab.di.ApplicationContext;
+import com.lc.musiccollab.data.SessionManager;
+import com.lc.musiccollab.data.SessionManager_;
+import com.lc.musiccollab.di.subcomponent.component.BaseActivityComponent;
+import com.lc.musiccollab.di.subcomponent.component.HomeActivityComponent;
+import com.lc.musiccollab.di.subcomponent.component.LoginActivityComponent;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * Created by topher on 1/25/2018.
  */
 
-@Module
+@Module(
+        subcomponents = {
+                BaseActivityComponent.class,
+                HomeActivityComponent.class,
+                LoginActivityComponent.class
+        }
+)
 public class AppModule {
 
-    public AppModule(Application application)
-    {
-        this.APPLICATION = application;
-    }
+//    public AppModule(Context context) {
+//        CONTEXT = context;
+//    }
+//
+//    private final Context CONTEXT;
 
-    private final Application APPLICATION;
+//    @Provides
+//    Context provideContext(Application application)
+//    {
+//        return application;
+//    }
 
-    @Provides
-    @ApplicationContext
-    Context getContext()
-    {
-        return APPLICATION.getApplicationContext();
-    }
-
-    @Provides
-    Application getAPPLICATION()
-    {
-        return APPLICATION;
-    }
-
+//    @Provides
+//    @Singleton
+//    public Context provideContext(Application application) {
+//        return application;
+//    }
     @Provides
     @Singleton
-    CalligraphyConfig getCalligraphyConfig()
+    Context provideContext(Application application)
     {
-        return new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Pacifico-Regular.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build();
+        return application;
     }
+
+    @Provides
+    SessionManager provideSessionManager(Context context)
+    {
+        return SessionManager_.getInstance_(context);
+    }
+//    @Binds
+//    @Singleton
+//    Application application(App app);
+//
+//    @Provides
+//    @AppContext
+//    Context provideContext()
+//    {
+//        return APPLICATION.getApplicationContext();
+//    }
+//
+//    @Provides
+//    Application provideAPPLICATION()
+//    {
+//        return APPLICATION;
+//    }
+//
+////    @Provides
+////    @Singleton
+////    CalligraphyConfig provideCalligraphyConfig()
+////    {
+////        return new CalligraphyConfig.Builder()
+////                .setDefaultFontPath("fonts")
+////                .setFontAttrId(R.attr.fontPath)
+////                .build();
+////    }
+//
+//    @Provides
+//    @Singleton
+//    CalligraphyManger provideCalligraphyManager(Context context)
+//    {
+//        return new CalligraphyManagerImpl(context, CONSTANTS.);
+//    }
+
+
 }

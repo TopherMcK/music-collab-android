@@ -1,4 +1,4 @@
-package com.lc.musiccollab.networking.login;
+package com.lc.musiccollab.service.login;
 
 import org.androidannotations.rest.spring.annotations.Get;
 import org.androidannotations.rest.spring.annotations.Rest;
@@ -8,12 +8,8 @@ import org.androidannotations.rest.spring.annotations.Rest;
  */
 
 @Rest(rootUrl = "", converters = String.class)
-public class LoginModule implements LoginService{
+public interface LoginService {
 
     @Get("")
-    public boolean submitLogin(String username, String password)
-    {
-        return true;
-    }
-
+    boolean submitLogin(String username, String password);
 }

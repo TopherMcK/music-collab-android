@@ -1,35 +1,43 @@
 package com.lc.musiccollab.ui.home;
 
-import android.content.Context;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.view.Window;
-import android.widget.TextView;
 
 import com.lc.musiccollab.R;
 import com.lc.musiccollab.data.SessionManager;
-import com.lc.musiccollab.ui.tabs.TabsPagerAdapter;
+import com.lc.musiccollab.ui.BaseActivity;
+import com.lc.musiccollab.ui.tabs.home.HomeTabsPagerAdapter;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
-import android.support.v7.app.AppCompatActivity;
+import javax.inject.Inject;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import dagger.android.AndroidInjection;
 
 @EActivity(R.layout.activity_home)
 @OptionsMenu(R.menu.primary_options_menu)
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity
+{
 
-    @Bean
+    @AfterInject
+    void onInjectDependencies()
+    {
+        AndroidInjection.inject(this);
+    }
+
+    //    @Inject
+    HomeView homeView;
+
+    HomeTabsPagerAdapter adapter;
+
+    @Inject
     SessionManager sessionManager;
 
     @OptionsItem(R.id.logout)
@@ -47,72 +55,17 @@ public class HomeActivity extends AppCompatActivity {
     @ViewById
     BottomNavigationView bottomNav;
 
-    @Override
-    protected void attachBaseContext(Context newBase)
-    {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-
     @AfterViews
     void init()
     {
-        sessionManager.checkLogin(getApplicationContext());
-
-//        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
-
-//        mainTabLayout.addTab(mainTabLayout.newTab().setTag("Tab 1"));
-//        mainTabLayout.addTab(mainTabLayout.newTab().setTag("Tab 2"));
-//        mainTabLayout.addTab(mainTabLayout.newTab().setTag("Tab 3"));
-//        mainTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-//        TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
-//        viewPager.setAdapter(adapter);
-//        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mainTabLayout));
-//
-//        mainTabLayout.setupWithViewPager(viewPager);
-//
-//        mainTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
-//        {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab)
-//            {
-//
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab)
-//            {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab)
-//            {
-//
-//            }
-//        });
-
-        TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
+        adapter = new HomeTabsPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         mainTabLayout.setupWithViewPager(viewPager);
     }
 
-    @EFragment(R.layout.content_fragment_tab_home)
-    public static class HomeFragment extends Fragment
+    public FragmentManager getHomeSupportFragmentManager()
     {
-        public HomeFragment(){}
-
-        @FragmentArg
-        int index;
-
-        @ViewById
-        TextView homeText;
-
-        @AfterViews
-        void init()
-        {
-            homeText.setText(String.format("Page %d selected", index));
-        }
+        return getSupportFragmentManager();
     }
 
 }

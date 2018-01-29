@@ -13,46 +13,43 @@ import org.androidannotations.annotations.EBean;
 
 import java.util.HashMap;
 
+import javax.inject.Inject;
+
 @EBean
 public class SessionManager {
 
-    public SessionManager(Context context){}
-
-    SharedPreferences pref;
-    Editor editor;
-    Context _context;
-
-    int PRIVATE_MODE = 0;
-
-    public void setContext(Context _startupContext)
+    @Inject
+    public SessionManager(Context context)
     {
-        this._context = _startupContext;
-        pref = _context.getSharedPreferences(CONSTANTS.PREF_NAME, PRIVATE_MODE);
+        CONTEXT = context;
+        pref = CONTEXT.getSharedPreferences(CONSTANTS.PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
     }
 
-    public void createLoginSession(Context _loginViewContext, String name, String email)
-    {
-        setContext(_loginViewContext);
+    final Context CONTEXT;
+    Editor editor;
+    SharedPreferences pref;
 
+    int PRIVATE_MODE = 0;
+
+    public void createLoginSession(String name, String email)
+    {
         editor.putBoolean(CONSTANTS.IS_LOGGED_IN, true);
         editor.putString(CONSTANTS.KEY_NAME, name);
         editor.putString(CONSTANTS.KEY_EMAIL, email);
         editor.commit();
     }
 
-    public void checkLogin(Context _startupContext)
+    public void checkLogin()
     {
-        setContext(_startupContext);
-
         if(!this.isLoggedIn())
         {
-            LoginActivity_.intent(_context).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            LoginActivity_.intent(CONTEXT).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     .start();
         } else
         {
-            HomeActivity_.intent(_context).start();
+            HomeActivity_.intent(CONTEXT).start();
         }
     }
 
@@ -68,7 +65,7 @@ public class SessionManager {
         editor.clear();
         editor.commit();
 
-        LoginActivity_.intent(_context).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        LoginActivity_.intent(CONTEXT).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 .start();
     }

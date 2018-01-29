@@ -71,7 +71,7 @@ public class LoginActivity extends Activity {
 //        isValidUser = loginService.submitLogin(username, password);
 
         if (isValidUser) {
-            sessionManager.createLoginSession(getApplicationContext(), "placeholder name", "placeholder email");
+            sessionManager.createLoginSession("placeholder name", "placeholder email");
 
             startHomeActvity();
         } else {
