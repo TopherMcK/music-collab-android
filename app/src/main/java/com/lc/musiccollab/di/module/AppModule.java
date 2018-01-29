@@ -5,9 +5,9 @@ import android.content.Context;
 
 import com.lc.musiccollab.data.SessionManager;
 import com.lc.musiccollab.data.SessionManager_;
-import com.lc.musiccollab.di.subcomponent.component.BaseActivityComponent;
-import com.lc.musiccollab.di.subcomponent.component.HomeActivityComponent;
-import com.lc.musiccollab.di.subcomponent.component.LoginActivityComponent;
+import com.lc.musiccollab.di.feature.component.BaseActivityComponent;
+import com.lc.musiccollab.di.feature.component.MainActivityComponent;
+import com.lc.musiccollab.di.feature.component.LoginActivityComponent;
 
 import javax.inject.Singleton;
 
@@ -21,7 +21,7 @@ import dagger.Provides;
 @Module(
         subcomponents = {
                 BaseActivityComponent.class,
-                HomeActivityComponent.class,
+                MainActivityComponent.class,
                 LoginActivityComponent.class
         }
 )

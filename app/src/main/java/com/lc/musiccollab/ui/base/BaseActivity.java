@@ -1,4 +1,4 @@
-package com.lc.musiccollab.ui;
+package com.lc.musiccollab.ui.base;
 
 import android.content.Context;
 import android.os.Bundle;

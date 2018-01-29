@@ -1,6 +1,6 @@
-package com.lc.musiccollab.di.subcomponent.component;
+package com.lc.musiccollab.di.feature.component;
 
-import com.lc.musiccollab.di.subcomponent.module.LoginActivityModule;
+import com.lc.musiccollab.di.feature.module.LoginActivityModule;
 import com.lc.musiccollab.ui.login.LoginActivity_;
 
 import dagger.Subcomponent;

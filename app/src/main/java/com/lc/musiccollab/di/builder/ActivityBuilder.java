@@ -1,11 +1,11 @@
 package com.lc.musiccollab.di.builder;
 
-import com.lc.musiccollab.di.subcomponent.module.BaseActivityModule;
-import com.lc.musiccollab.di.subcomponent.module.HomeActivityModule;
-import com.lc.musiccollab.di.subcomponent.module.LoginActivityModule;
-import com.lc.musiccollab.ui.BaseActivity;
-import com.lc.musiccollab.ui.home.HomeActivity_;
+import com.lc.musiccollab.di.feature.module.BaseActivityModule;
+import com.lc.musiccollab.di.feature.module.LoginActivityModule;
+import com.lc.musiccollab.di.feature.module.MainActivityModule;
+import com.lc.musiccollab.ui.base.BaseActivity;
 import com.lc.musiccollab.ui.login.LoginActivity_;
+import com.lc.musiccollab.ui.main.MainActivity_;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -15,31 +15,14 @@ import dagger.android.ContributesAndroidInjector;
  */
 
 @Module
-public abstract class ActivityBuilder {
-
-//    @ContributesAndroidInjector(modules = HomeActivityModule.class)
-//    abstract HomeActivity bindHomeActivity();
-
-//    @BindsInstance
-//    @IntoMap
-//    @ActivityKey(BaseActivity.class)
-//    abstract AndroidInjector.Factory<? extends Activity> bindBaseActivity(BaseActivityModule.Builder builder);
-//
-//    @BindsInstance
-//    @IntoMap
-//    @ActivityKey(HomeActivity.class)
-//    abstract AndroidInjector.Factory<? extends Activity> bindBaseActivity(HomeActivityModule.Builder builder);
-//
-//    @BindsInstance
-//    @IntoMap
-//    @ActivityKey(LoginActivity.class)
-//    abstract AndroidInjector.Factory<? extends Activity> bindBaseActivity(LoginActivityModule.Builder builder);
+public abstract class ActivityBuilder
+{
 
     @ContributesAndroidInjector(modules = BaseActivityModule.class)
     abstract BaseActivity bindBaseActivity();
 
-    @ContributesAndroidInjector(modules = HomeActivityModule.class)
-    abstract HomeActivity_ bindHomeActivity_();
+    @ContributesAndroidInjector(modules = MainActivityModule.class)
+    abstract MainActivity_ bindMainActivity_();
 
     @ContributesAndroidInjector(modules = LoginActivityModule.class)
     abstract LoginActivity_ bindLoginActivity_();

@@ -1,4 +1,4 @@
-package com.lc.musiccollab.di.subcomponent.module;
+package com.lc.musiccollab.di.feature.module;
 
 import com.lc.musiccollab.R;
 import com.lc.musiccollab.utils.CONSTANTS;

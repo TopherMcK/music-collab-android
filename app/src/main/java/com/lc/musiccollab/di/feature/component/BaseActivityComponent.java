@@ -1,7 +1,7 @@
-package com.lc.musiccollab.di.subcomponent.component;
+package com.lc.musiccollab.di.feature.component;
 
-import com.lc.musiccollab.di.subcomponent.module.BaseActivityModule;
-import com.lc.musiccollab.ui.BaseActivity;
+import com.lc.musiccollab.di.feature.module.BaseActivityModule;
+import com.lc.musiccollab.ui.base.BaseActivity;
 
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;

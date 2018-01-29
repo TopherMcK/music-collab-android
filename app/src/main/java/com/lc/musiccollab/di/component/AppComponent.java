@@ -52,6 +52,6 @@ public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
 //    void inject(MainApp app);
 //    void inject(BaseActivity baseActivity);
-//    void inject(HomeActivity homeActivity);
+//    void inject(MainActivity homeActivity);
 //    void inject(LoginActivity loginActivity);
 }

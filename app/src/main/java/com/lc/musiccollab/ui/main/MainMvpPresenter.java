@@ -1,4 +1,4 @@
-package com.lc.musiccollab.ui.home;
+package com.lc.musiccollab.ui.main;
 
 import de.nenick.androidannotations.plugin.mvp.EMvpPresenter;
 
@@ -7,5 +7,6 @@ import de.nenick.androidannotations.plugin.mvp.EMvpPresenter;
  */
 
 @EMvpPresenter
-public interface HomeMvpPresenter {
+public interface MainMvpPresenter
+{
 }
