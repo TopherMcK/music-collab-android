@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.lc.musiccollab.R;
 import com.lc.musiccollab.data.SessionManager;
-import com.lc.musiccollab.ui.home.HomeActivity_;
+import com.lc.musiccollab.ui.main.MainActivity_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -50,7 +50,6 @@ public class LoginActivity extends Activity {
     @AfterViews
     void init()
     {
-        loginTitleTextView = (TextView) findViewById(R.id.loginTitleTextView);
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
         loginTitleTextView.setTypeface(font);
     }
@@ -71,7 +70,7 @@ public class LoginActivity extends Activity {
 //        isValidUser = loginService.submitLogin(username, password);
 
         if (isValidUser) {
-            sessionManager.createLoginSession(getApplicationContext(), "placeholder name", "placeholder email");
+            sessionManager.createLoginSession("placeholder name", "placeholder email");
 
             startHomeActvity();
         } else {
@@ -82,7 +81,7 @@ public class LoginActivity extends Activity {
     @UiThread
     void startHomeActvity()
     {
-        HomeActivity_.intent(getApplicationContext())
+        MainActivity_.intent(getApplicationContext())
                 .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 .start();

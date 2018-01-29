@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:theme="@style/AppTheme"
     style="@style/MainWrapper"
-    tools:context="com.lc.musiccollab.ui.home.HomeActivity_">
+    tools:context="com.lc.musiccollab.ui.main.HomeActivity_">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
