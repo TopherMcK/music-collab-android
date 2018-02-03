@@ -1,6 +1,6 @@
 package com.lc.musiccollab;
 
-import com.lc.musiccollab.data.SessionManager;
+import com.lc.musiccollab.data.user_session.SessionManagerImpl;
 import com.lc.musiccollab.di.component.AppComponent;
 import com.lc.musiccollab.di.component.DaggerAppComponent;
 
@@ -19,7 +19,7 @@ public class MainApp extends DaggerApplication
 {
 
     @Bean
-    SessionManager sessionManager;
+    SessionManagerImpl sessionManager;
 
     protected AndroidInjector<? extends DaggerApplication> applicationInjector()
     {

@@ -1,4 +1,4 @@
-package com.lc.musiccollab.data;
+package com.lc.musiccollab.data.user_session;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,10 +16,11 @@ import java.util.HashMap;
 import javax.inject.Inject;
 
 @EBean
-public class SessionManager {
+public class SessionManagerImpl implements SessionManager
+{
 
     @Inject
-    public SessionManager(Context context)
+    public SessionManagerImpl(Context context)
     {
         CONTEXT = context;
         pref = CONTEXT.getSharedPreferences(CONSTANTS.PREF_NAME, PRIVATE_MODE);
@@ -70,7 +71,7 @@ public class SessionManager {
                 .start();
     }
 
-    public boolean isLoggedIn()
+    private boolean isLoggedIn()
     {
         return pref.getBoolean(CONSTANTS.IS_LOGGED_IN, false);
     }
