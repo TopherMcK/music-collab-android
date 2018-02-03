@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.lc.musiccollab.MainApp;
-import com.lc.musiccollab.data.SessionManager;
+import com.lc.musiccollab.data.user_session.SessionManagerImpl;
 import com.lc.musiccollab.di.builder.ActivityBuilder;
 import com.lc.musiccollab.di.module.AppModule;
 
@@ -29,11 +29,11 @@ public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
     Context provideContext();
 
-    SessionManager provideSessionManager();
+    SessionManagerImpl provideSessionManager();
 
     void inject(MainApp app);
 
-    void inject(SessionManager sessionManager);
+    void inject(SessionManagerImpl sessionManager);
 
     @Override
     void inject(DaggerApplication instance);

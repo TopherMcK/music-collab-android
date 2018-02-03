@@ -6,7 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 
 import com.lc.musiccollab.R;
-import com.lc.musiccollab.data.SessionManager;
+import com.lc.musiccollab.data.user_session.SessionManager;
+import com.lc.musiccollab.data.user_session.SessionManagerImpl;
 import com.lc.musiccollab.ui.base.BaseActivity;
 import com.lc.musiccollab.ui.tabs.home.HomeTabsPagerAdapter;
 
@@ -36,7 +37,7 @@ public class MainActivity extends BaseActivity
 
     HomeTabsPagerAdapter adapter;
 
-    @Bean
+    @Bean(SessionManagerImpl.class)
     SessionManager sessionManager;
 
     @OptionsItem(R.id.logout)

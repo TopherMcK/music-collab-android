@@ -1,8 +1,10 @@
 package com.lc.musiccollab.ui.login;
 
 /**
- * Created by topher on 1/22/2018.
+ * Created by topher on 2/3/2018.
  */
 
-public class LoginPresenter {
+public interface LoginPresenter
+{
+    boolean callLoginService(String username, String password);
 }

@@ -3,11 +3,11 @@ package com.lc.musiccollab.di.module;
 import android.app.Application;
 import android.content.Context;
 
-import com.lc.musiccollab.data.SessionManager;
-import com.lc.musiccollab.data.SessionManager_;
+import com.lc.musiccollab.data.user_session.SessionManagerImpl;
+import com.lc.musiccollab.data.user_session.SessionManagerImpl_;
 import com.lc.musiccollab.di.feature.component.BaseActivityComponent;
-import com.lc.musiccollab.di.feature.component.MainActivityComponent;
 import com.lc.musiccollab.di.feature.component.LoginActivityComponent;
+import com.lc.musiccollab.di.feature.component.MainActivityComponent;
 
 import javax.inject.Singleton;
 
@@ -52,10 +52,11 @@ public class AppModule {
     }
 
     @Provides
-    SessionManager provideSessionManager(Context context)
+    SessionManagerImpl provideSessionManager(Context context)
     {
-        return SessionManager_.getInstance_(context);
+        return SessionManagerImpl_.getInstance_(context);
     }
+
 //    @Binds
 //    @Singleton
 //    Application application(App app);
