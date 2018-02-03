@@ -20,4 +20,6 @@
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
     <string name="login_btn">Submit</string>
+    <string name="loging_invalid_input">Please Provide A Username And Password</string>
+    <string name="not_found_un_or_pw">Invalid Username Or Password</string>
 </resources>
