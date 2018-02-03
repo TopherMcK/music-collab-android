@@ -11,7 +11,10 @@
     <color name="colorPrimary">#758d63</color>
     <color name="colorPrimaryDark">#5a6d4c</color>
     <color name="colorAccent">#757575</color>
+    <color name="errorRed">#E53935</color>
     <color name="grayBtn">#9f9f9f</color>
     <color name="loginTitleGradientStart">#aac1d89b</color>
     <color name="loginTitleGradientStop">#aa36552a</color>
+    <color name="toastTextBackground">#FAFAFA</color>
+    <color name="warning">#FB8C00</color>
 </resources>

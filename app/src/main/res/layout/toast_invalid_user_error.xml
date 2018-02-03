@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    style="@style/ToastInvalidErrorView"
+    android:id="@+id/toastUserError">
+    <TextView
+        style="@style/ToastInvalidErrorText"
+        android:text="@string/not_found_un_or_pw"/>
+</LinearLayout>

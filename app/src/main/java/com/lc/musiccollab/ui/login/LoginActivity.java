@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.text.InputType;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +21,7 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.FocusChange;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
@@ -42,17 +47,21 @@ public class LoginActivity extends Activity
     @Inject
     Context context_;
 
+    @Bean(LoginPresenterImpl.class)
+    LoginPresenter loginPresenter;
+
     @ViewById
     EditText loginUnInput;
 
     @ViewById
     EditText loginPwInput;
 
-    @Bean(LoginPresenterImpl.class)
-    LoginPresenter loginPresenter;
-
     @ViewById
     TextView loginTitleTextView;
+
+    Toast customToast;
+
+    View toastView;
 
     @AfterViews
     void init()
@@ -76,6 +85,16 @@ public class LoginActivity extends Activity
         }
     }
 
+    @FocusChange(R.id.loginPwInput)
+    public void focusChangedPasswordInput(boolean hasFocus)
+    {
+        if(hasFocus)
+        {
+            loginPwInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            loginPwInput.setSelection(loginPwInput.getText().length());
+        }
+    }
+
     @Background
     public void submitLogin(String username, String password)
     {
@@ -93,13 +112,24 @@ public class LoginActivity extends Activity
     @UiThread
     public void showInvalidUserErrorMessage()
     {
-        Toast.makeText(this, "Invalid Username or Password", Toast.LENGTH_LONG).show();
+        Log.d("invalidInputError", "** showInvalidInputErrorMessage called");
+        LayoutInflater inflater = getLayoutInflater();
+        toastView = inflater.inflate(R.layout.toast_invalid_user_error, null);
+        customToast = new Toast(this);
+        customToast.setView(toastView);
+        customToast.makeText(this,"Please provide a Username and Password", Toast.LENGTH_LONG);
+        customToast.show();
     }
 
     @UiThread
     public void showInvalidInputErrorMessage()
     {
-        Toast.makeText(this, "Please provide a Username and Password", Toast.LENGTH_LONG).show();
+        Log.d("** Log Activity", "** showInvalidUserErrorMessage called");
+        LayoutInflater inflater = getLayoutInflater();
+        toastView = inflater.inflate(R.layout.toast_warning, null);
+        customToast = new Toast(this);
+        customToast.setView(toastView);
+        customToast.show();
     }
 
     @UiThread
